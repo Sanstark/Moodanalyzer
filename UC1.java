@@ -1,17 +1,19 @@
-package com.day11.test.exception;
+package com.day11.exception;
 
-import com.day11.exception.MoodAnalyser;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.Scanner;
 
-public class MATest {
-    MoodAnalyser ma = new MoodAnalyser("Feeling sad today");
+public class MoodAnalyser {
+    public String analyzeMood(String mood) {
+        if (mood.contains("sad"))
+            return "Sad";
+        else
+            return "Happy";
+    }
 
-    @Test
-    public void TestAnalyzeMood() {
-        String mood = "Sad";
-        Assert.assertThat(mood, CoreMatchers.is(ma.analyzeMood()));
-
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        com.day11.exception.MoodAnalyser ma = new com.day11.exception.MoodAnalyser();
+        System.out.println(ma.analyzeMood(sc.nextLine()));
+        sc.close();
     }
 }
